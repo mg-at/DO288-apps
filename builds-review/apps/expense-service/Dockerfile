@@ -6,4 +6,4 @@ RUN mvn dependency:go-offline
 COPY src .
 RUN mvn clean package
 
-CMD ["java", "-jar", "target/expense-restful-service-1.0-SNAPSHOT-runner.jar"]
+CMD ["java", "-jar", "/home/jboss/target/expense-service-1.0.0-SNAPSHOT.jar"]
