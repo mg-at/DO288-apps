@@ -1,9 +1,11 @@
-FROM registry.ocp4.example.com:8443/ubi8/nodejs-16:latest as builder
+# FROM registry.ocp4.example.com:8443/ubi8/nodejs-16:latest as builder
+FROM quay.io/redhattraining/ocpdev-ubi9-nodejs-16:1-120.1692771027 as builder
 ADD . .
 # Avoid using "npm ci" to prevent problems with the private NPM registry in the lab environment
 RUN npm install --omit dev
 
-FROM registry.ocp4.example.com:8443/ubi8/nodejs-16:latest
+# FROM registry.ocp4.example.com:8443/ubi8/nodejs-16:latest
+FROM quay.io/redhattraining/ocpdev-ubi9-nodejs-16:1-120.1692771027
 COPY --from=builder . .
 EXPOSE 3000
 CMD npm run -d start
